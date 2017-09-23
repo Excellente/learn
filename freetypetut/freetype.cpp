@@ -12,6 +12,10 @@ int main()
         fprintf(stderr, "Could not init freetype library\n");
         return (1);
     }
-    if (FT_New_Face(ft, "Christmas\ in\ finland.ttf"))
+    if (FT_New_Face(ft, "finland.ttf", 0, &fontface))
+    {
+        fprintf(stderr, "Could not open font\n");
+        return (1);
+    }
     return (0);
 }
