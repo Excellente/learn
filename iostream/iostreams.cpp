@@ -42,29 +42,29 @@ int main(void)
     
     p.age = 19;
     strcpy(p.name, "Samuelle");
-    ofs.close();
-    if (!ifs.is_open())
-        cout << "file failed to open" << endl;
-    else
+    // ofs.close();
+    // if (!ifs.is_open())
+    //     cout << "file failed to open" << endl;
+    // else
+    // {
+    //     if (isEmpty(ifs))
+    //         cout << "file is empty" << endl;
+    //     else
+    //         cout << "file is not empty" << endl;
+    // }
+    if (ofs.is_open())
     {
-        if (isEmpty(ifs))
-            cout << "file is empty" << endl;
-        else
-            cout << "file is not empty" << endl;
+        boost::archive::text_oarchive oa(ofs);
+        oa & p;
     }
-    // if (ofs.is_open())
-    // {
-    //     boost::archive::text_oarchive oa(ofs);
-    //     oa & p;
-    // }
-    // p2.age = 0;
-    // strcpy(p2.name, "");
-    // cout << p2.age << endl;
-    // if (ifs.is_open())
-    // {
-    //     boost::archive::text_iarchive ia(ifs);
-    //     ia & p2;
-    // }
-    // cout << p2.age << endl;
+    p2.age = 0;
+    strcpy(p2.name, "");
+    cout << p2.age << endl;
+    if (ifs.is_open())
+    {
+        boost::archive::text_iarchive ia(ifs);
+        ia & p2;
+    }
+    cout << p2.age << endl;
     return (0);
 }
